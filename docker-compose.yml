@@ -1,0 +1,25 @@
+version: '2'
+services:
+    message-server:
+        container_name: message-server
+        build:
+            context: message-server
+            dockerfile: Dockerfile
+        image: message-server:latest
+        ports:
+            - 9090:8080
+        networks:
+            - container-network
+    product-server:
+        container_name: product-server
+        build:
+            context: product-server
+            dockerfile: Dockerfile
+        image: product-server:latest
+        ports:
+            - 9091:8080
+        networks:
+            - container-network
+networks:
+    container-network:
+        driver: bridge
